@@ -16,6 +16,7 @@ imports
 .backups
 .secrets
 .xpose
+venv
 
 # Ignore Sensetive Secrets
 .env

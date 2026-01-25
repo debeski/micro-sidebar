@@ -9,14 +9,17 @@ autorun.ini
 autorun.inf
 
 # Ignore app directories
-logs
-media
-staticfiles
-imports
-.backups
-.secrets
-.xpose
-venv
+logs/
+media/
+staticfiles/
+imports/
+.backups/
+.secrets/
+.xpose/
+venv/
+dist/
+*.egg-info/
+
 
 # Ignore Sensetive Secrets
 .env

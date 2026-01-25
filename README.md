@@ -2,7 +2,7 @@
 
 [![PyPI version](https://badge.fury.io/py/micro-sidebar.svg)](https://pypi.org/project/micro-sidebar/)
 
-**RTL** lightweight, reusable sjango app that provides a dynamic sidebar for your django projects.
+**RTL** lightweight, reusable django app that provides a dynamic sidebar for your django projects.
 
 ## Requirements
 

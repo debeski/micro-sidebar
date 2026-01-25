@@ -40,27 +40,6 @@
     ]
     ```
 
-4.  **Add to your Base Template:**
-    In your `base.html` (or equivalent), include the sidebar. It is designed to sit to the right of your main content. 
-    
-    Example structure using Flexbox:
-    ```html
-    <body>
-        <div class="d-flex">
-            <!-- Sidebar -->
-            {% include "sidebar/main.html" %}
-
-            <!-- Main Content -->
-            <div class="flex-grow-1">
-                {% block content %}{% endblock %}
-            </div>
-        </div>
-        
-        <!-- Bootstrap JS (Required) -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
-    ```
-
 ## Customization
 
 ### Override Default Menu
@@ -86,7 +65,7 @@ The sidebar uses a block-based template system. To define your own menu items:
 {% endblock %}
 ```
 
-Then, include your custom template in `base.html` instead of the default:
+Then, include your custom template in `base.html`:
 ```html
 {% include "sidebar_menu.html" %}
 ```

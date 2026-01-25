@@ -2,6 +2,8 @@
 
 A reusable RTL Django sidebar app for Web Apps.
 
+[![PyPI version](https://badge.fury.io/py/micro-sidebar.svg)](https://pypi.org/project/micro-sidebar/)
+
 ## Requirements
 
 -   **Django**: >= 5.1
@@ -9,9 +11,11 @@ A reusable RTL Django sidebar app for Web Apps.
 
 ## Installation
 
-1.  **Install the package:**
+1.  **Install:**
     ```bash
     pip install micro-sidebar
+    # OR
+    pip install git+https://github.com/debeski/micro-sidebar.git
     ```
 
 2.  **Add to `INSTALLED_APPS`:**

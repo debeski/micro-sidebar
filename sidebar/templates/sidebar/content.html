@@ -1,0 +1,31 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'sidebar/style.css' %}">
+<script src="{% static 'sidebar/js/sidebar.js' %}" nonce="{{ request.csp_nonce }}" defer></script>
+<!-- Ghost Sidebar for small screens layout stability -->
+<div class="sidebar-ghost"></div>
+
+<!-- sidebar.html -->
+<div class="col-2 flex-column shadow-sm sidebar {% if request.session.sidebarCollapsed %}collapsed{% endif %} no-print" 
+     id="sidebar" 
+     data-toggle-url="{% url 'toggle_sidebar' %}"
+     data-session-collapsed="{{ request.session.sidebarCollapsed|yesno:'true,false' }}">
+    <div class="list-group flex-shrink-0">
+        
+        <!-- DEFAULT CONTENT / INSTRUCTIONS -->
+        <div class="p-3 text-center text-muted">
+            <i class="bi bi-info-circle mb-2" style="font-size: 24px;"></i>
+            <p class="small">
+                <strong>Default Sidebar</strong><br>
+                To customize this menu, create a file at:<br>
+                <code>templates/sidebar/content.html</code><br>
+                in your Django project.
+            </p>
+        </div>
+
+        <a href="#" class="list-group-item list-group-item-action">
+            <i class="bi bi-house me-2" style="font-size: 24px;"></i>
+            <span>Example Home</span>
+        </a>
+        
+    </div>
+</div>

@@ -1,0 +1,93 @@
+
+.sidebar {
+    z-index: 900;
+    transition: width 0.15s ease-in-out;
+    background-color: white;
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0; /* Sticks the sidebar at the top of the parent container */
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 45px); /* Fallback/Base height for sticky behavior */
+    /* Custom Scrollbar for Webkit */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,0.2) transparent;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 20px;
+}
+
+.sidebar.collapsed {
+    width: 52px !important;
+}
+.sidebar.collapsed .list-group-item span {
+    display: none !important;
+}
+.sidebar.collapsed .accordion-button span {
+    display: none !important;
+}
+.sidebar.collapsed .accordion-button::after {
+    background-image: none;
+}
+
+
+.sidebar-ghost {
+    display: none;
+    width: 52px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 1100px) {
+    .sidebar-ghost {
+        display: block;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 45px; /* Fallback, JS calculates exact height */
+        right: 0;
+        width: 250px;
+        transition: width 0.15s ease-in-out;
+        height: calc(100vh - 45px); /* Fallback */
+        z-index: 1000;
+    }
+    
+    .sidebar.collapsed {
+        width: 52px !important;
+        right: 0; 
+        position: fixed; 
+    }
+}
+.sidebar .list-group-item {
+    border: none !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    height: 60px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 12px;
+    align-items: center;
+}
+
+.sidebar .accordion-button {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    border: none !important;
+    height: 60px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 12px;
+    align-items: center;
+}
+
+.sidebar .accordion-button:not(.collapsed) {
+    background-color: var(--body) !important;
+}

@@ -1,4 +1,4 @@
-# Micro Sidebar - A Reusable RTL Django Sidebar App.
+# Micro Sidebar - A Reusable RTL Django Sidebar App
 
 [![PyPI version](https://badge.fury.io/py/micro-sidebar.svg)](https://pypi.org/project/micro-sidebar/)
 
@@ -48,7 +48,7 @@
     <body>
         <div class="d-flex">
             <!-- Sidebar -->
-            {% include "sidebar/content.html" %}
+            {% include "sidebar/main.html" %}
 
             <!-- Main Content -->
             <div class="flex-grow-1">
@@ -63,12 +63,33 @@
 
 ## Customization
 
-### Overriding Content
-The sidebar comes with a default template. To customize the links and content, create a file named `content.html` inside `templates/sidebar/` in your project's `templates` directory.
+### Override Default Menu
+The sidebar uses a block-based template system. To define your own menu items:
 
-**Path:** `your_project/templates/sidebar/content.html`
+1. Create a new template (e.g., `templates/sidebar_menu.html`).
+2. Extend `sidebar/main.html`.
+3. Override the `{% block items %}`.
 
-The default sidebar logic expects specific classes like `.list-group-item` and `.accordion-item` for the collapsible features to work correctly with the provided JS.
+**Example `sidebar_menu.html`:**
+```html
+{% extends "sidebar/main.html" %}
+
+{% block items %}
+<a href="{% url 'home' %}" class="list-group-item list-group-item-action">
+    <i class="bi bi-house me-2" style="font-size: 24px;"></i>
+    <span>Home</span>
+</a>
+<a href="{% url 'settings' %}" class="list-group-item list-group-item-action">
+    <i class="bi bi-gear me-2" style="font-size: 24px;"></i>
+    <span>Settings</span>
+</a>
+{% endblock %}
+```
+
+Then, include your custom template in `base.html` instead of the default:
+```html
+{% include "sidebar_menu.html" %}
+```
 
 ### Positioning
 The sidebar is sticky by default. If your app has a top navigation bar (titlebar), the sidebar will automatically adjust its position below it on small screens. If no titlebar is detected, it will stick to the top of the viewport.
@@ -85,3 +106,4 @@ While it may theoretically work in LTR environments if standard Bootstrap files 
 | **v1.0.0** | Initial Release. |
 | **v1.0.1** | Fixed titlebar positioning bug causing overlap/gaps. |
 | **v1.0.2** | Improved documentation clarity and added usage instructions. |
+| **v1.1.0** | Renamed `content.html` to `main.html` for clarity. Refactored to use `{% block items %}` for easier extension. |

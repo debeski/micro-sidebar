@@ -1,11 +1,14 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = [
+    "setuptools<69",
+    "wheel<0.41"
+]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "micro_sidebar"
 version = "1.1.0"
-description = "A reusable Django sidebar for Web Apps"
+description = "A Reusable RTL Django Sidebar App"
 readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "MIT"}
@@ -36,3 +39,6 @@ Homepage = "https://github.com/debeski/micro-sidebar"
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["sidebar*"]
+
+[tool.setuptools]
+include-package-data = true

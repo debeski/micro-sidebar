@@ -5,7 +5,7 @@ setup(
     version="1.1.0",
     author="DeBeski",
     author_email="debeski1@gmail.com",
-    description="A reusable Django sidebar for Web Apps",
+    description="A Reusable RTL Django Sidebar App",
     long_description=open('README.md').read() if open('README.md') else '',
     long_description_content_type="text/markdown",
     url="https://github.com/debeski/micro-sidebar",

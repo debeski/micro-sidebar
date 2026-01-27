@@ -86,3 +86,4 @@ While it may theoretically work in LTR environments if standard Bootstrap files 
 | **v1.0.1** | Fixed titlebar positioning bug causing overlap/gaps. |
 | **v1.0.2** | Improved documentation clarity and added usage instructions. |
 | **v1.1.0** | Renamed `content.html` to `main.html` for clarity. Refactored to use `{% block items %}` for easier extension. |
+| **v1.2.0** | **New Theme Implementation:** Redesigned UI with rounded pill-shaped items, tactile micro-animations, and a refined color palette. Improved responsiveness with dynamic top-offset calculations and inline FOUC fixes for small screens. Fixed tooltip stickiness bug. |

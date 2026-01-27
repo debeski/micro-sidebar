@@ -22,23 +22,15 @@ document.addEventListener("DOMContentLoaded", function () {
     function adjustSidebarForWindowSize() {
         const screenWidth = window.innerWidth;
         const titlebar = document.querySelector('.titlebar');
-        const titlebarHeight = titlebar ? titlebar.offsetHeight : 0;
+        const titlebarHeight = (titlebar && window.getComputedStyle(titlebar).display !== 'none') ? titlebar.offsetHeight : 0;
+        
+        // Set dynamic CSS variable for the sidebar
+        sidebar.style.setProperty('--sidebar-top-offset', titlebarHeight + 'px');
 
         if (screenWidth < 1100) {
             // Always collapse sidebar on small screens
             sidebar.classList.add("collapsed");
             initializeTooltips();
-
-            // Dynamic positioning to anchor to titlebar
-            // Dynamic positioning to anchor to titlebar
-            if (titlebarHeight > 0) {
-                 sidebar.style.top = titlebarHeight + 'px';
-                 sidebar.style.height = (window.innerHeight - titlebarHeight) + 'px';
-            } else {
-                 // Failsafe: Stick to top if no titlebar
-                 sidebar.style.top = '0px';
-                 sidebar.style.height = '100vh';
-            }
         } else {
             // Reset styles for large screens to let CSS take over (sticky)
             sidebar.style.top = '';
@@ -99,6 +91,20 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(triggerAutoscale, 250);
         });
     }
+
+    // Proactively hide tooltips when any sidebar click occurs
+    // This fixes the "sticking to top of screen" glitch during transitions
+    sidebar.addEventListener("click", function (event) {
+        // Find all tooltips in the sidebar and dispose them immediately
+        // This ensures they are completely removed from the DOM before any transition
+        const sidebarItems = sidebar.querySelectorAll(".list-group-item, .accordion-button");
+        sidebarItems.forEach(item => {
+            if (item._tooltip) {
+                item._tooltip.dispose();
+                delete item._tooltip;
+            }
+        });
+    });
 });
 
 // Close sidebar when clicking outside (only for small screens)
@@ -138,7 +144,8 @@ function initializeTooltips() {
         item._tooltip = new bootstrap.Tooltip(item, {
             title: item.querySelector("span").textContent,
             placement: "right",
-            customClass: "tooltip-custom"
+            customClass: "tooltip-custom",
+            trigger: 'hover' // Explicitly disable click/focus triggers
         });
     });
 }

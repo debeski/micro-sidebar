@@ -9,6 +9,19 @@
      id="sidebar" 
      data-toggle-url="{% url 'toggle_sidebar' %}"
      data-session-collapsed="{{ request.session.sidebarCollapsed|yesno:'true,false' }}">
+    <script>
+        // Immediate FOUC fix for small screens
+        (function() {
+            var screenWidth = window.innerWidth;
+            var sidebar = document.currentScript.parentElement;
+            if (screenWidth < 1100) {
+                sidebar.classList.add('collapsed');
+                // Temporarily disable transition to avoid "sliding shut" flicker on load
+                sidebar.style.transition = 'none';
+                setTimeout(function() { sidebar.style.transition = ''; }, 100);
+            }
+        })();
+    </script>
     <div class="list-group flex-shrink-0">
         {% block items %}
         

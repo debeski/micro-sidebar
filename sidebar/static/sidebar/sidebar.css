@@ -3,11 +3,11 @@
     transition: width 0.2s ease-in-out;
     background: linear-gradient(180deg, #ffffff 10%, #f1f7fd 100%);
     position: sticky;
-    /* Use the JS-provided offset, fallback to 0 if standalone */
-    top: var(--sidebar-top-offset, 0px);
+    top: var(--header-height, 60px);
+    align-self: flex-start; /* Force to top of flex container */
     overflow-y: auto;
     overflow-x: hidden;
-    height: calc(100vh - var(--sidebar-top-offset, 0px));
+    height: calc(100vh - var(--header-height, 60px));
     border-left: 1px solid #f1f3f5;
     scrollbar-width: thin;
     scrollbar-color: rgba(0,0,0,0.1) transparent;
@@ -64,12 +64,11 @@
 
     .sidebar {
         position: fixed;
-        /* Use dynamic offset even in fixed mode for consistency */
-        top: var(--sidebar-top-offset, 0px);
+        top: var(--header-height, 60px);
         right: 0;
         width: 250px;
         transition: width 0.15s ease-in-out;
-        height: calc(100vh - var(--sidebar-top-offset, 0px));
+        height: calc(100vh - var(--header-height, 60px));
         z-index: 1000;
         --sidebar-item-px: 6px;
     }
@@ -145,6 +144,13 @@
     white-space: nowrap;
     overflow: hidden;
     transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.sidebar .accordion-button:focus {
+    box-shadow: none !important;
+    outline: none !important;
 }
 
 .sidebar .accordion-button:not(.collapsed) {

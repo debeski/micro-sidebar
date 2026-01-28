@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="micro_sidebar",
-    version="1.2.0",
+    version="1.2.1",
     author="DeBeski",
     author_email="debeski1@gmail.com",
     description="A Reusable RTL Django Sidebar App",

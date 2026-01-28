@@ -87,3 +87,4 @@ While it may theoretically work in LTR environments if standard Bootstrap files 
 | **v1.0.2** | Improved documentation clarity and added usage instructions. |
 | **v1.1.0** | Renamed `content.html` to `main.html` for clarity. Refactored to use `{% block items %}` for easier extension. |
 | **v1.2.0** | **New Theme Implementation:** Redesigned UI with rounded pill-shaped items, tactile micro-animations, and a refined color palette. Improved responsiveness with dynamic top-offset calculations and inline FOUC fixes for small screens. Fixed tooltip stickiness bug. |
+| **v1.2.1** | **Positioning Fix:** Added `align-self: flex-start` to resolve 60px vertical offset in flex containers. Removed legacy `sidebar-top-offset` CSS variable and JS calculations. Added `box-shadow: none` and `outline: none` to accordion buttons to remove focus ring. Fixed page flickering on wider screens by constraining sidebar height with `calc(100vh - header-height)`. |

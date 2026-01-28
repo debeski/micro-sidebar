@@ -21,11 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to handle sidebar collapsing based on window size
     function adjustSidebarForWindowSize() {
         const screenWidth = window.innerWidth;
-        const titlebar = document.querySelector('.titlebar');
-        const titlebarHeight = (titlebar && window.getComputedStyle(titlebar).display !== 'none') ? titlebar.offsetHeight : 0;
-        
-        // Set dynamic CSS variable for the sidebar
-        sidebar.style.setProperty('--sidebar-top-offset', titlebarHeight + 'px');
 
         if (screenWidth < 1100) {
             // Always collapse sidebar on small screens

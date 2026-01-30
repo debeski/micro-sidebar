@@ -9,7 +9,7 @@
      id="sidebar" 
      data-toggle-url="{% url 'toggle_sidebar' %}"
      data-session-collapsed="{{ request.session.sidebarCollapsed|yesno:'true,false' }}">
-    <script>
+    <script nonce="{{ request.csp_nonce }}">
         // Immediate FOUC fix for small screens
         (function() {
             var screenWidth = window.innerWidth;

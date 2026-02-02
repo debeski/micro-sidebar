@@ -227,4 +227,6 @@
     width: 100%;
     background: transparent;
     pointer-events: none; /* Let clicks pass through to content if needed, but we override for items */
+    display: flex;
+    justify-content: flex-end
 }

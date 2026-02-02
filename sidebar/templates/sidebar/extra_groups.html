@@ -16,7 +16,7 @@
         <div id="extraGroup{{ forloop.counter }}" 
              class="accordion-collapse collapse{% if group.has_active %} show{% endif %}" 
              data-bs-parent="#sidebarExtraAccordion">
-            <div class="accordion-body p-0">
+            <div class="accordion-body p-0" data-group-name="{{ group_name|slugify }}">
                 {% for item in group.items %}
                 <a href="{{ item.url }}" 
                    class="list-group-item list-group-item-action{% if item.active %} active{% endif %}"

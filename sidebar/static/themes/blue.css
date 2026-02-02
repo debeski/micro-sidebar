@@ -10,6 +10,7 @@
     --primal_dark: #1e4f99;
     --primal-rgb: 35, 99, 195;
     --btn-primary-shadow: rgba(35, 99, 195, 0.4);
+    --nav-item-color: var(--table-row);
 
     /* Login Theme Variables */
     --bg-gradient: linear-gradient(135deg, #f6f7f9 0%, #dee8ff 100%);

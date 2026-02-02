@@ -10,7 +10,9 @@
     --primal_dark: #2563eb;
     --primal-rgb: 59, 130, 246;
     --btn-primary-shadow: rgba(59, 130, 246, 0.4);
-    color-scheme: dark; /* Forces browser native controls (scrollbars, form-control icons) to dark mode */
+    --nav-item-color: var(--table-row);
+    color-scheme: dark;
+
 
     /* Bootstrap Overrides */
     --bs-primary: var(--primal);

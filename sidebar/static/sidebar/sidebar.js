@@ -66,40 +66,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 deinitializeTooltips();
             }
 
-            // Only update session if screen width is >= 1100px
-            if (window.innerWidth >= 1100) {
-                fetch(toggleUrl, {
-                    method: "POST",
-                    headers: {
-                        "X-CSRFToken": csrfToken,
-                        "Content-Type": "application/x-www-form-urlencoded",
-                    },
-                    body: `collapsed=${isCollapsed}`
-                }).then(response => response.json())
-                  .then(data => {
-                      if (data.status === "success") {
-                          isSessionCollapsed = isCollapsed; // Update local state
-                      }
-                  }).catch(error => console.error("Error updating sidebar state:", error));
-            }
-    
-            setTimeout(triggerAutoscale, 250);
+            // Update session
+            fetch(toggleUrl, {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": csrfToken,
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: `collapsed=${isCollapsed}`
+            }).then(response => response.json())
+              .then(data => {
+                  if (data.status === "success") {
+                      isSessionCollapsed = isCollapsed; // Update local state
+                  }
+              }).catch(error => console.error("Error updating sidebar state:", error));
         });
     }
 
-    // Proactively hide tooltips when any sidebar click occurs
-    // This fixes the "sticking to top of screen" glitch during transitions
-    sidebar.addEventListener("click", function (event) {
-        // Find all tooltips in the sidebar and dispose them immediately
-        // This ensures they are completely removed from the DOM before any transition
-        const sidebarItems = sidebar.querySelectorAll(".list-group-item, .accordion-button");
-        sidebarItems.forEach(item => {
-            if (item._tooltip) {
-                item._tooltip.dispose();
-                delete item._tooltip;
-            }
-        });
-    });
+
 });
 
 // Close sidebar when clicking outside (only for small screens)
@@ -153,13 +137,4 @@ function deinitializeTooltips() {
             delete item._tooltip;
         }
     });
-}
-
-function triggerAutoscale() {
-    if (window.innerWidth > 1100) {
-        const autoscaleButton = document.querySelector('.modebar-btn[data-title="Reset axes"]');
-        if (autoscaleButton) {
-            autoscaleButton.click();
-        }
-    }
 }

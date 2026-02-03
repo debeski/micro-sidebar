@@ -206,3 +206,4 @@ While it may theoretically work in LTR environments if standard Bootstrap files 
 | **v2.1.0** | **Refactor & Enhancements:** Decoupled customization from models by introducing `DEFAULT_ITEMS` setting for overriding auto-discovered items' labels/icons/order. Added `EXTRA_ITEMS` setting for manual, permission-aware sidebar links grouped in accordions with `{% extra_sidebar %}` tag. Removed deprecated model-level `sidebar_*` attributes. |
 | **v2.2.0** | **Drag-and-Drop Reordering:** New reorder toggle in sidebar toolbar (visible in expanded mode only). Click to enable reorder mode with shake animation. Drag items to reorder with visual drop indicator. Order persists to localStorage. Default order applies only if no user customization exists. Accordion headers remain fixed. |
 | **v2.2.1** | **Theme Fix:** Fixed light theme colors to use proper CSS variables. |
+| **v2.2.2** | **Theme Fix:** Fixed dark theme colors to use proper CSS variables. |

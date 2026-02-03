@@ -248,11 +248,11 @@
 }
 
 /* Slightly "Stale" / Desaturated Light Backgrounds for Dark Mode to stand out but not blinding */
-:root.theme-dark .btn-secondary { background-color: #cbd5e1 !important; color: #1e293b !important; } /* Stale Slate-300 */
-:root.theme-dark .btn-success   { background-color: #a7f3d0 !important; color: #064e3b !important; } /* Stale Emerald-200 */
-:root.theme-dark .btn-info      { background-color: #bae6fd !important; color: #0c4a6e !important; } /* Stale Sky-200 */
-:root.theme-dark .btn-warning   { background-color: #fde68a !important; color: #78350f !important; } /* Stale Amber-200 */
-:root.theme-dark .btn-danger    { background-color: #fecaca !important; color: #7f1d1d !important; } /* Stale Red-200 */
+:root.theme-dark .btn-secondary { color: #1e293b !important; } /* Stale Slate-300 */
+:root.theme-dark .btn-success   { color: #064e3b !important; } /* Stale Emerald-200 */
+:root.theme-dark .btn-info      { color: #0c4a6e !important; } /* Stale Sky-200 */
+:root.theme-dark .btn-warning   { color: #78350f !important; } /* Stale Amber-200 */
+:root.theme-dark .btn-danger    { color: #7f1d1d !important; } /* Stale Red-200 */
 
 /* Hover States for Dark Mode Soft Buttons */
 :root.theme-dark .btn-secondary:hover { background-color: #94a3b8 !important; }
@@ -500,4 +500,53 @@
     border-top: 1px solid #334155 !important;
 }
 
+/* 20. Bootstrap Alerts Dark Mode */
+:root.theme-dark .alert-success {
+    background-color: rgba(22, 101, 52, 0.25) !important;
+    border-color: rgba(34, 197, 94, 0.3) !important;
+    color: #86efac !important;
+}
+:root.theme-dark .alert-success .alert-link {
+    color: #4ade80 !important;
+}
 
+:root.theme-dark .alert-warning {
+    background-color: rgba(217, 119, 6, 0.2) !important;
+    border-color: rgba(251, 191, 36, 0.3) !important;
+    color: #fcd34d !important;
+}
+:root.theme-dark .alert-warning .alert-link {
+    color: #fbbf24 !important;
+}
+
+:root.theme-dark .alert-danger {
+    background-color: rgba(127, 29, 29, 0.25) !important;
+    border-color: rgba(248, 113, 113, 0.3) !important;
+    color: #fca5a5 !important;
+}
+:root.theme-dark .alert-danger .alert-link {
+    color: #f87171 !important;
+}
+
+:root.theme-dark .alert-info {
+    background-color: rgba(30, 64, 175, 0.2) !important;
+    border-color: rgba(96, 165, 250, 0.3) !important;
+    color: #93c5fd !important;
+}
+:root.theme-dark .alert-info .alert-link {
+    color: #60a5fa !important;
+}
+
+/* 21. Table Danger Rows Dark Mode */
+:root.theme-dark .table > tbody > tr.table-danger > td,
+:root.theme-dark .table > tbody > tr.table-danger > th {
+    --bs-table-bg-type: rgba(127, 29, 29, 0.25) !important;
+    background-color: rgba(127, 29, 29, 0.25) !important;
+    color: #fca5a5 !important;
+}
+
+:root.theme-dark .table-hover > tbody > tr.table-danger:hover > * {
+    --bs-table-accent-bg: rgba(127, 29, 29, 0.35) !important;
+    background-color: rgba(127, 29, 29, 0.35) !important;
+    color: #fca5a5 !important;
+}

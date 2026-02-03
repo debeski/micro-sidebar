@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "micro_sidebar"
-version = "2.2.1"
+version = "2.2.2"
 description = "A Reusable RTL Django Sidebar App"
 readme = "README.md"
 requires-python = ">=3.9"

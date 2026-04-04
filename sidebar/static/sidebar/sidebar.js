@@ -21,24 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to handle sidebar collapsing based on window size
     function adjustSidebarForWindowSize() {
         const screenWidth = window.innerWidth;
-        const titlebar = document.querySelector('.titlebar');
-        const titlebarHeight = titlebar ? titlebar.offsetHeight : 0;
 
         if (screenWidth < 1100) {
             // Always collapse sidebar on small screens
             sidebar.classList.add("collapsed");
             initializeTooltips();
-
-            // Dynamic positioning to anchor to titlebar
-            // Dynamic positioning to anchor to titlebar
-            if (titlebarHeight > 0) {
-                 sidebar.style.top = titlebarHeight + 'px';
-                 sidebar.style.height = (window.innerHeight - titlebarHeight) + 'px';
-            } else {
-                 // Failsafe: Stick to top if no titlebar
-                 sidebar.style.top = '0px';
-                 sidebar.style.height = '100vh';
-            }
         } else {
             // Reset styles for large screens to let CSS take over (sticky)
             sidebar.style.top = '';
@@ -79,26 +66,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 deinitializeTooltips();
             }
 
-            // Only update session if screen width is >= 1100px
-            if (window.innerWidth >= 1100) {
-                fetch(toggleUrl, {
-                    method: "POST",
-                    headers: {
-                        "X-CSRFToken": csrfToken,
-                        "Content-Type": "application/x-www-form-urlencoded",
-                    },
-                    body: `collapsed=${isCollapsed}`
-                }).then(response => response.json())
-                  .then(data => {
-                      if (data.status === "success") {
-                          isSessionCollapsed = isCollapsed; // Update local state
-                      }
-                  }).catch(error => console.error("Error updating sidebar state:", error));
-            }
-    
-            setTimeout(triggerAutoscale, 250);
+            // Update session
+            fetch(toggleUrl, {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": csrfToken,
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: `collapsed=${isCollapsed}`
+            }).then(response => response.json())
+              .then(data => {
+                  if (data.status === "success") {
+                      isSessionCollapsed = isCollapsed; // Update local state
+                  }
+              }).catch(error => console.error("Error updating sidebar state:", error));
         });
     }
+
+
 });
 
 // Close sidebar when clicking outside (only for small screens)
@@ -138,7 +123,8 @@ function initializeTooltips() {
         item._tooltip = new bootstrap.Tooltip(item, {
             title: item.querySelector("span").textContent,
             placement: "right",
-            customClass: "tooltip-custom"
+            customClass: "tooltip-custom",
+            trigger: 'hover' // Explicitly disable click/focus triggers
         });
     });
 }
@@ -151,13 +137,4 @@ function deinitializeTooltips() {
             delete item._tooltip;
         }
     });
-}
-
-function triggerAutoscale() {
-    if (window.innerWidth > 1100) {
-        const autoscaleButton = document.querySelector('.modebar-btn[data-title="Reset axes"]');
-        if (autoscaleButton) {
-            autoscaleButton.click();
-        }
-    }
 }

@@ -2,6 +2,8 @@
 
 [![PyPI version](https://badge.fury.io/py/micro-sidebar.svg)](https://pypi.org/project/micro-sidebar/)
 
+`micro Sidebar has been discontinued, and is instead now offered as an integral part of django-microSYS ui framework.`
+
 **RTL** lightweight, reusable django app that provides a dynamic sidebar for your django projects.
 
 ## Requirements
